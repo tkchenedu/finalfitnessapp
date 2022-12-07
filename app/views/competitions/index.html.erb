@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all competitions
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new competition
+    </h2>
+
+    <form action="/insert_competition" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="goalprotein_box">
+          Goalprotein
+        </label>
+
+        <input type="text" id="goalprotein_box" name="query_goalprotein">
+      </div>
+
+      <div>
+        <label for="goal_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_box" name="query_goal">
+      </div>
+
+      <button>
+        Create competition
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Goalprotein
+        </th>
+
+        <th>
+          Goal
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_competitions.each do |a_competition| %>
+      <tr>
+        <td>
+          <%= a_competition.id %>
+        </td>
+
+        <td>
+          <%= a_competition.user_id %>
+        </td>
+
+        <td>
+          <%= a_competition.goalprotein %>
+        </td>
+
+        <td>
+          <%= a_competition.goal %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_competition.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_competition.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/competitions/<%= a_competition.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

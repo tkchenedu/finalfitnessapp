@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Competition #<%= @the_competition.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/competitions">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_competition/<%= @the_competition.id %>">
+          Delete competition
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_competition.user_id %>
+      </dd>
+
+      <dt>
+        Goalprotein
+      </dt>
+      <dd>
+        <%= @the_competition.goalprotein %>
+      </dd>
+
+      <dt>
+        Goal
+      </dt>
+      <dd>
+        <%= @the_competition.goal %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_competition.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_competition.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit competition
+    </h2>
+
+    <form action="/modify_competition/<%= @the_competition.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_competition.user_id %>">
+      </div>
+
+      <div>
+        <label for="goalprotein_box">
+          Goalprotein
+        </label>
+
+        <input type="text" id="goalprotein_box" name="query_goalprotein" value="<%= @the_competition.goalprotein %>">
+      </div>
+
+      <div>
+        <label for="goal_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_box" name="query_goal" value="<%= @the_competition.goal %>">
+      </div>
+
+      <button>
+        Update competition
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,39 @@
+<% if @the_user.id == session.fetch(:user_id)%>
+<h1>MY PROFILE</h1> 
+<%else%>
+<h1>USER PROFILE</h1> 
+<%end%>
+
+
+<% if @the_user.id == @current_user.id%>
+      <div>
+        <h1>Total Calories: <%=@calories%></h1>
+      </div>
+<div>
+    <form action="/modify_user" method="post">
+      <div>
+        <label for="message_box">New Inspirational Quote</label>
+        <textarea id="message_box" name="query_message" rows="3"><%= @the_user.quote %></textarea> 
+      </div>
+      <div>
+        <label for="image_box">New Image</label>
+        <input id="image_box" name="query_image" value="<%= @the_user.image %>">
+      </div>
+      
+      <div>
+        <label for="password_box">Change My Password</label>
+        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+      </div>
+      
+
+
+      <button>
+        Update account
+      </button>
+    </form>
+<%end%>

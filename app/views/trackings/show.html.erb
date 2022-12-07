@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Tracking #<%= @the_tracking.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/trackings">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_tracking/<%= @the_tracking.id %>">
+          Delete tracking
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Food
+      </dt>
+      <dd>
+        <%= @the_tracking.food_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_tracking.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_tracking.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_tracking.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit tracking
+    </h2>
+
+    <form action="/modify_tracking/<%= @the_tracking.id %>"  method="post" >
+      <div>
+        <label for="food_id_box">
+          Food
+        </label>
+
+        <input type="text" id="food_id_box" name="query_food_id" value="<%= @the_tracking.food_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_tracking.user_id %>">
+      </div>
+
+      <button>
+        Update tracking
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

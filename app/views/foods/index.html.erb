@@ -1,0 +1,193 @@
+<div>
+  <div>
+    <h1>
+      List of all foods
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new food
+    </h2>
+
+    <form action="/insert_food" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="fat_box">
+          Fat
+        </label>
+
+        <input type="text" id="fat_box" name="query_fat">
+      </div>
+
+      <div>
+        <label for="carb_box">
+          Carb
+        </label>
+
+        <input type="text" id="carb_box" name="query_carb">
+      </div>
+
+      <div>
+        <label for="protein_box">
+          Protein
+        </label>
+
+        <input type="text" id="protein_box" name="query_protein">
+      </div>
+
+      <div>
+        <label for="calories_box">
+          Calories
+        </label>
+
+        <input type="text" id="calories_box" name="query_calories">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image">
+      </div>
+
+      <div>
+        <label for="grams_box">
+          Grams
+        </label>
+
+        <input type="text" id="grams_box" name="query_grams">
+      </div>
+
+      <div>
+        <label for="trackings_count_box">
+          Trackings count
+        </label>
+
+        <input type="text" id="trackings_count_box" name="query_trackings_count">
+      </div>
+
+      <button>
+        Create food
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Fat
+        </th>
+
+        <th>
+          Carb
+        </th>
+
+        <th>
+          Protein
+        </th>
+
+        <th>
+          Calories
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          Grams
+        </th>
+
+
+        <th>
+        </th>
+        <%if session.fetch(:user_id)%>
+
+        <th>
+        </th>
+        <%end%>
+      </tr>
+
+      <% @list_of_foods.each do |a_food| %>
+      <tr>
+
+        <td>
+          <%= a_food.name %>
+        </td>
+
+        <td>
+          <%= a_food.fat %>
+        </td>
+
+        <td>
+          <%= a_food.carb %>
+        </td>
+
+        <td>
+          <%= a_food.protein %>
+        </td>
+
+        <td>
+          <%= a_food.calories %>
+        </td>
+
+        <td>
+          <img src="<%= a_food.image %>" width=200 height=150>
+        </td>
+
+        <td>
+          <%= a_food.grams %>
+        </td>
+
+        <td>
+          <a href="/foods/<%= a_food.id %>">
+            Show details
+          </a>
+        </td>
+        
+        <%if session.fetch(:user_id)%>
+        <td>
+          <form action="/insert_tracking" method="post">
+              <input type="hidden" name="query_food_id" value="<%=a_food.id%>">
+              <input type="hidden" name="query_user_id" value="<%=@current_user.id%>">
+
+
+              <button>
+                Log Food
+              </button>
+            </form>
+          
+          
+        </td>
+        <%end%>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

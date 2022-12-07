@@ -1,0 +1,176 @@
+<div>
+  <div>
+    <h1>
+      Food #<%= @the_food.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/foods">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_food/<%= @the_food.id %>">
+          Delete food
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_food.name %>
+      </dd>
+
+      <dt>
+        Fat
+      </dt>
+      <dd>
+        <%= @the_food.fat %>
+      </dd>
+
+      <dt>
+        Carb
+      </dt>
+      <dd>
+        <%= @the_food.carb %>
+      </dd>
+
+      <dt>
+        Protein
+      </dt>
+      <dd>
+        <%= @the_food.protein %>
+      </dd>
+
+      <dt>
+        Calories
+      </dt>
+      <dd>
+        <%= @the_food.calories %>
+      </dd>
+
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @the_food.image %>
+      </dd>
+
+      <dt>
+        Grams
+      </dt>
+      <dd>
+        <%= @the_food.grams %>
+      </dd>
+
+      <dt>
+        Trackings count
+      </dt>
+      <dd>
+        <%= @the_food.trackings_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_food.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_food.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit food
+    </h2>
+
+    <form action="/modify_food/<%= @the_food.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_food.name %>">
+      </div>
+
+      <div>
+        <label for="fat_box">
+          Fat
+        </label>
+
+        <input type="text" id="fat_box" name="query_fat" value="<%= @the_food.fat %>">
+      </div>
+
+      <div>
+        <label for="carb_box">
+          Carb
+        </label>
+
+        <input type="text" id="carb_box" name="query_carb" value="<%= @the_food.carb %>">
+      </div>
+
+      <div>
+        <label for="protein_box">
+          Protein
+        </label>
+
+        <input type="text" id="protein_box" name="query_protein" value="<%= @the_food.protein %>">
+      </div>
+
+      <div>
+        <label for="calories_box">
+          Calories
+        </label>
+
+        <input type="text" id="calories_box" name="query_calories" value="<%= @the_food.calories %>">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" value="<%= @the_food.image %>">
+      </div>
+
+      <div>
+        <label for="grams_box">
+          Grams
+        </label>
+
+        <input type="text" id="grams_box" name="query_grams" value="<%= @the_food.grams %>">
+      </div>
+
+      <div>
+        <label for="trackings_count_box">
+          Trackings count
+        </label>
+
+        <input type="text" id="trackings_count_box" name="query_trackings_count" value="<%= @the_food.trackings_count %>">
+      </div>
+
+      <button>
+        Update food
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

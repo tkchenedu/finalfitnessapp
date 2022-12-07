@@ -16,6 +16,41 @@
   </head>
 
   <body>
+  <ul>
+      <li>
+        <a href="/foods">
+          Foods
+        </a>
+      </li>
+      
+      <li>
+        <a href="/competitions">
+          Competitions
+        </a>
+      </li>
+      <% if session.fetch(:user_id) %>
+        <li>
+          <a href="/users/<%=@current_user.id%>">
+            <%=User.where({:id=>session.fetch(:user_id)}).first.email%>
+          </a>
+        </li>
+        <li>
+          <a href="/user_sign_out">
+            Sign out
+          </a>
+        </li>
+      <%else%>
+        <li>
+          <a href="/user_sign_in">
+            Sign in
+          </a>
+        </li>
+        <li>
+          <a href="/user_sign_up">
+            Sign up
+          </a>
+        </li>
+      <%end %>
     <%= yield %>
   </body>
 </html>
