@@ -1,6 +1,6 @@
 class TrackingsController < ApplicationController
   def index
-    matching_trackings = Tracking.all
+    matching_trackings = Tracking.all.where({:user_id=>@current_user.id})
 
     @list_of_trackings = matching_trackings.order({ :created_at => :desc })
 

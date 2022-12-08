@@ -1,3 +1,7 @@
+  <p><%= notice %>
+  </p>
+  <p><%= alert %>
+  </p>
 <div>
   <div>
     <h1>
@@ -8,7 +12,10 @@
 
 <hr>
 
+
 <div>
+  <%if session.fetch(:user_id)%>
+
   <div>
     <h2>
       Add a new tracking
@@ -97,6 +104,7 @@
       <% end %>
     </table>
   </div>
+  <%end%>
 </div>
 
 <hr>

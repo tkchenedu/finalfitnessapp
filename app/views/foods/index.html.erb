@@ -1,3 +1,7 @@
+  <p><%= notice %>
+  </p>
+  <p><%= alert %>
+  </p>
 <div>
   <div>
     <h1>
@@ -21,33 +25,35 @@
         </label>
 
         <input type="text" id="name_box" name="query_name">
+        <small id="emailHelp" class="form-text text-muted">We'll never share what you named the food with anyone.</small>
+
       </div>
 
       <div>
+        <label for="grams_box">
+          Grams
+        </label>
+
+        <input type="text" id="grams_box" name="query_grams">
+
         <label for="fat_box">
           Fat
         </label>
 
         <input type="text" id="fat_box" name="query_fat">
-      </div>
 
-      <div>
         <label for="carb_box">
           Carb
         </label>
 
         <input type="text" id="carb_box" name="query_carb">
-      </div>
 
-      <div>
         <label for="protein_box">
           Protein
         </label>
 
         <input type="text" id="protein_box" name="query_protein">
-      </div>
 
-      <div>
         <label for="calories_box">
           Calories
         </label>
@@ -61,14 +67,6 @@
         </label>
 
         <input type="text" id="image_box" name="query_image">
-      </div>
-
-      <div>
-        <label for="grams_box">
-          Grams
-        </label>
-
-        <input type="text" id="grams_box" name="query_grams">
       </div>
 
       <div>

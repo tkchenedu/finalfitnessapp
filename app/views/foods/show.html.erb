@@ -1,7 +1,11 @@
+  <p><%= notice %>
+  </p>
+  <p><%= alert %>
+  </p>
 <div>
   <div>
     <h1>
-      Food #<%= @the_food.id %> details
+      <%= @the_food.name %> details
     </h1>
 
     <div>
@@ -58,7 +62,7 @@
         Image
       </dt>
       <dd>
-        <%= @the_food.image %>
+        <img src="<%= @the_food.image %>" width=200 height=150>
       </dd>
 
       <dt>
@@ -69,21 +73,21 @@
       </dd>
 
       <dt>
-        Trackings count
+        Times Used
       </dt>
       <dd>
         <%= @the_food.trackings_count %>
       </dd>
 
       <dt>
-        Created at
+        Created
       </dt>
       <dd>
         <%= time_ago_in_words(@the_food.created_at) %> ago
       </dd>
 
       <dt>
-        Updated at
+        Updated
       </dt>
       <dd>
         <%= time_ago_in_words(@the_food.updated_at) %> ago

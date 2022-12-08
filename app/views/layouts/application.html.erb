@@ -12,45 +12,52 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link rel="stylesheet" href="/bootstrap.css">
 
   </head>
 
   <body>
-  <ul>
-      <li>
+    
+  <table style="width: 100%; margin-bottom: 3em;" border="1">
+      <tr>
+        <td >
         <a href="/foods">
           Foods
         </a>
-      </li>
+        </td>
       
-      <li>
-        <a href="/competitions">
-          Competitions
-        </a>
-      </li>
+      
       <% if session.fetch(:user_id) %>
-        <li>
+        <td >
           <a href="/users/<%=@current_user.id%>">
             <%=User.where({:id=>session.fetch(:user_id)}).first.email%>
           </a>
-        </li>
-        <li>
+        </td>
+        <td >
+        <a href="/competitions">
+          Personal Goals
+        </a>
+      </td>
+        <td >
           <a href="/user_sign_out">
             Sign out
           </a>
-        </li>
+        </td>
+        
       <%else%>
-        <li>
+        <td >
           <a href="/user_sign_in">
             Sign in
           </a>
-        </li>
-        <li>
+        </td>
+        <td >
           <a href="/user_sign_up">
             Sign up
           </a>
-        </li>
+        </td>
       <%end %>
+          </table>
+
     <%= yield %>
   </body>
 </html>

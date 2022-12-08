@@ -1,31 +1,37 @@
+  <p><%= notice %>
+  </p>
+  <p><%= alert %>
+  </p>
 <div>
   <div>
     <h1>
-      List of all competitions
+      List of all goals
     </h1>
   </div>
 </div>
 
+
 <hr>
 
 <div>
+  <%if session.fetch(:user_id)%>
   <div>
     <h2>
-      Add a new competition
+      Add a new goal
     </h2>
 
     <form action="/insert_competition" method="post">
       <div>
         <label for="user_id_box">
-          User
+          
         </label>
 
-        <input type="text" id="user_id_box" name="query_user_id">
+        <input type="hidden" id="user_id_box" name="query_user_id" value = <%=session.fetch(:user_id)%>>
       </div>
 
       <div>
         <label for="goalprotein_box">
-          Goalprotein
+          Protein Goal
         </label>
 
         <input type="text" id="goalprotein_box" name="query_goalprotein">
@@ -33,60 +39,52 @@
 
       <div>
         <label for="goal_box">
-          Goal
+          Calories Goal 
         </label>
 
         <input type="text" id="goal_box" name="query_goal">
       </div>
 
       <button>
-        Create competition
+        Create goal
       </button>
     </form>
   </div>
+  <%end%>
 </div>
 
 <hr>
 <div>
   <div>
-    <table border="1">
+    <table border="1" class="table table-bordered">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           User
         </th>
 
         <th>
-          Goalprotein
+          Protein Goal
         </th>
 
         <th>
-          Goal
+          Calories Goal 
         </th>
 
         <th>
-          Created at
+          Your Status
         </th>
 
         <th>
-          Updated at
-        </th>
-
-        <th>
+          Details
         </th>
       </tr>
 
       <% @list_of_competitions.each do |a_competition| %>
       <tr>
+      <% if a_competition.user_id == session.fetch(:user_id)%>
         <td>
-          <%= a_competition.id %>
-        </td>
-
-        <td>
-          <%= a_competition.user_id %>
+          <%= a_competition.starter.username %>
         </td>
 
         <td>
@@ -98,17 +96,21 @@
         </td>
 
         <td>
-          <%= time_ago_in_words(a_competition.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_competition.updated_at) %> ago
-        </td>
+          <% if $calories > a_competition.goal.to_f %> 
+          Accomplished Goal
 
+          <% else %>
+          Keep Going 
+          <% end %>
+        </td>
         <td>
           <a href="/competitions/<%= a_competition.id %>">
             Show details
           </a>
+ 
         </td>
+                <%end%>
+
       </tr>
       <% end %>
     </table>

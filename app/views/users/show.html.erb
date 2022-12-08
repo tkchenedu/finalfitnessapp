@@ -1,5 +1,11 @@
+  <p><%= notice %>
+  </p>
+  <p><%= alert %>
+  </p>
+
 <% if @the_user.id == session.fetch(:user_id)%>
 <h1>MY PROFILE</h1> 
+<img src="<%= @the_user.image %>" width=200 height=150>
 <%else%>
 <h1>USER PROFILE</h1> 
 <%end%>
@@ -7,13 +13,13 @@
 
 <% if @the_user.id == @current_user.id%>
       <div>
-        <h1>Total Calories: <%=@calories%></h1>
+        <h1>Total Calories: <%=$calories%></h1>
       </div>
 <div>
     <form action="/modify_user" method="post">
       <div>
         <label for="message_box">New Inspirational Quote</label>
-        <textarea id="message_box" name="query_message" rows="3"><%= @the_user.quote %></textarea> 
+        <textarea id="message_box" name="query_quote" rows="3"><%= @the_user.quote %></textarea> 
       </div>
       <div>
         <label for="image_box">New Image</label>
@@ -30,6 +36,11 @@
         <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
       </div>
       
+      <input type="hidden" name="query_email" value="<%= @current_user.email %>">
+      <input type="hidden" name="query_username" value="<%= @current_user.username %>">
+      <input type="hidden" name="query_trackings_count" value="<%= @current_user.trackings_count %>">
+      <input type="hidden" name="query_competitions_count" value="<%= @current_user.competitions_count %>">
+
 
 
       <button>
