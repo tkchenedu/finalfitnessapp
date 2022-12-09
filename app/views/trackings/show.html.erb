@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Tracking #<%= @the_tracking.id %> details
+      Log details
     </h1>
 
     <div>
@@ -13,7 +13,7 @@
 
       <div>
         <a href="/delete_tracking/<%= @the_tracking.id %>">
-          Delete tracking
+          Delete log
         </a>
       </div>
     </div>
@@ -54,33 +54,7 @@
 
 
 <div>
-  <div>
-    <h2>
-      Edit tracking
-    </h2>
 
-    <form action="/modify_tracking/<%= @the_tracking.id %>"  method="post" >
-      <div>
-        <label for="food_id_box">
-          Food
-        </label>
-
-        <input type="text" id="food_id_box" name="query_food_id" value="<%= @the_tracking.food_id %>">
-      </div>
-
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_tracking.user_id %>">
-      </div>
-
-      <button>
-        Update tracking
-      </button>
-    </form>
-  </div>
 </div>
 
 <hr>

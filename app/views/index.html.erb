@@ -2,7 +2,7 @@
   </p>
   <p><%= alert %>
   </p>
-<h1>The Fitness App® </h1>
+<h1>The Fitness App </h1>
 <h3>EST 2022</h3>
 
   <p>
@@ -10,5 +10,5 @@
     <p>
   </p>
 <%if session.fetch(:user_id)%>
-<div><h1>Quote of the day: <%=@current_user.quote%></h1></div>
+<div><h1>Your Motivational Quote: <%=@current_user.quote%></h1></div>
 <%end%>

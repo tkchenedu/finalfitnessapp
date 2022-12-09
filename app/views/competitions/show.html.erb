@@ -5,7 +5,7 @@
 <div>
   <div>
     <h1>
-      Competition #<%= @the_competition.id %> details
+      Goal details
     </h1>
 
     <div>
@@ -17,7 +17,7 @@
 
       <div>
         <a href="/delete_competition/<%= @the_competition.id %>">
-          Delete competition
+          Delete goal
         </a>
       </div>
     </div>
@@ -31,14 +31,14 @@
       </dd>
 
       <dt>
-        Goalprotein
+        Goal protein
       </dt>
       <dd>
         <%= @the_competition.goalprotein %>
       </dd>
 
       <dt>
-        Goal
+        Goal calories
       </dt>
       <dd>
         <%= @the_competition.goal %>
@@ -67,7 +67,7 @@
 <div>
   <div>
     <h2>
-      Edit competition
+      Edit goal
     </h2>
 
     <form action="/modify_competition/<%= @the_competition.id %>"  method="post" >
@@ -81,7 +81,7 @@
 
       <div>
         <label for="goalprotein_box">
-          Goalprotein
+          Goal protein
         </label>
 
         <input type="text" id="goalprotein_box" name="query_goalprotein" value="<%= @the_competition.goalprotein %>">
@@ -89,14 +89,14 @@
 
       <div>
         <label for="goal_box">
-          Goal
+          Goal calories
         </label>
 
         <input type="text" id="goal_box" name="query_goal" value="<%= @the_competition.goal %>">
       </div>
 
       <button>
-        Update competition
+        Update goal
       </button>
     </form>
   </div>
