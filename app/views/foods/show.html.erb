@@ -102,6 +102,7 @@
 <hr>
 
 <%if session.fetch(:user_id)%>
+<%if session.fetch(:user_id)==3%>
 
 <div>
   <div>
@@ -167,11 +168,7 @@
       </div>
 
       <div>
-        <label for="trackings_count_box">
-          Trackings count
-        </label>
-
-        <input type="text" id="trackings_count_box" name="query_trackings_count" value="<%= @the_food.trackings_count %>">
+      <input type="hidden" name="query_trackings_count" value="0">
       </div>
 
       <button>
@@ -181,5 +178,7 @@
   </div>
 </div>
 <%end%>
+<%end%>
+
 
 <hr>
