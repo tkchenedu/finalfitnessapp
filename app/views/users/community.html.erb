@@ -1,5 +1,12 @@
 
 <div>
+  <%if session.fetch(:user_id)%>
+    Welcome to Our Community Of Fitness/Nutrition Entheusiasts 
+
+  <%else%>
+  Join Our Community Of Fitness/Nutrition Entheusiasts 
+  <%end%>
+
     <table border="1">
     <% @list_of_users.each do |person| %>
       <tr>

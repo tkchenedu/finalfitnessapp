@@ -22,17 +22,17 @@ class CompetitionsController < ApplicationController
     matching_competitions = Competition.where({ :id => the_id })
 
     @the_competition = matching_competitions.at(0)
-    
+
     if @the_competition.goal <= $calories && @the_competition.goalprotein <= $protein
       require "mailgun-ruby"
       mg_api_key = "key-6e8f628f8c07bb415ef31325c2207dbf"
       mg_sending_domain = "mg.appdevproject.com"
       mg_client = Mailgun::Client.new(mg_api_key)
-      email_info =  { 
+      email_info = {
         :from => "umbrella@appdevproject.com",
-        :to => "tkchen@uchicago.edu",  # Put your own email address here if you want to see it in action
+        :to => @competition.starter.email,  # Put your own email address here if you want to see it in action
         :subject => "Congrats - Fitness Goal Accomplished!",
-        :text => "Keep it up!"
+        :text => "Keep it up!",
       }
       mg_client.send_message(mg_sending_domain, email_info)
     end
@@ -64,7 +64,7 @@ class CompetitionsController < ApplicationController
 
     if the_competition.valid?
       the_competition.save
-      redirect_to("/competitions/#{the_competition.id}", { :notice => "Competition updated successfully."} )
+      redirect_to("/competitions/#{the_competition.id}", { :notice => "Competition updated successfully." })
     else
       redirect_to("/competitions/#{the_competition.id}", { :alert => the_competition.errors.full_messages.to_sentence })
     end
@@ -76,6 +76,6 @@ class CompetitionsController < ApplicationController
 
     the_competition.destroy
 
-    redirect_to("/competitions", { :notice => "Competition deleted successfully."} )
+    redirect_to("/competitions", { :notice => "Competition deleted successfully." })
   end
 end

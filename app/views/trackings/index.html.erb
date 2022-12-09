@@ -83,7 +83,7 @@
         </label>
 
         <select id="food_id_box" name="query_food_id">
-          <% Food.all.each do |a_food| %>
+          <% Food.all.order({:name=>:asc}).each do |a_food| %>
             <option value=<%=a_food.id%> ><%=a_food.name%></option>
             
           <%end%>
