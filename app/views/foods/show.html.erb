@@ -15,11 +15,14 @@
         </a>
       </div>
 
+      <%if session.fetch(:user_id)%>
+
       <div>
         <a href="/delete_food/<%= @the_food.id %>">
           Delete food
         </a>
       </div>
+      <%end%>
     </div>
 
     <dl>
@@ -98,6 +101,7 @@
 
 <hr>
 
+<%if session.fetch(:user_id)%>
 
 <div>
   <div>
@@ -176,5 +180,6 @@
     </form>
   </div>
 </div>
+<%end%>
 
 <hr>

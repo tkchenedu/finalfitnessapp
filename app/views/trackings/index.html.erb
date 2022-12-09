@@ -3,71 +3,38 @@
   <p><%= alert %>
   </p>
 <div>
-  <div>
     <h1>
-      List of all trackings
+      My Food Log
     </h1>
-  </div>
 </div>
 
-<hr>
 
 
-<div>
-  <%if session.fetch(:user_id)%>
+<%if session.fetch(:user_id)%>
 
-  <div>
-    <h2>
-      Add a new tracking
-    </h2>
 
-    <form action="/insert_tracking" method="post">
-      <div>
-        <label for="food_id_box">
-          Food
-        </label>
-
-        <input type="text" id="food_id_box" name="query_food_id">
-      </div>
-
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <button>
-        Create tracking
-      </button>
-    </form>
-  </div>
-</div>
 
 <hr>
 <div>
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
 
+        <th></th>
         <th>
           Food
         </th>
 
         <th>
-          User
+          Calories (g)
         </th>
 
         <th>
-          Created at
+          Protein (g)
         </th>
 
         <th>
-          Updated at
+          Log time
         </th>
 
         <th>
@@ -76,23 +43,22 @@
 
       <% @list_of_trackings.each do |a_tracking| %>
       <tr>
+
+        <td></td>
+
         <td>
-          <%= a_tracking.id %>
+          <%= a_tracking.food.name %>
         </td>
 
         <td>
-          <%= a_tracking.food_id %>
+          <%= a_tracking.food.calories %>
         </td>
 
         <td>
-          <%= a_tracking.user_id %>
+          <%= a_tracking.food.protein %>
         </td>
-
         <td>
           <%= time_ago_in_words(a_tracking.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_tracking.updated_at) %> ago
         </td>
 
         <td>
@@ -105,6 +71,37 @@
     </table>
   </div>
   <%end%>
+    <div>
+    <h2>
+      Add a new tracking
+    </h2>
+
+    <form action="/insert_tracking" method="post">
+      <div>
+        <label for="food_id_box">
+          Select a food
+        </label>
+
+        <select id="food_id_box" name="query_food_id">
+          <% Food.all.each do |a_food| %>
+            <option value=<%=a_food.id%> ><%=a_food.name%></option>
+            
+          <%end%>
+        </select>
+      </div>
+
+      <div>
+
+        <input type="hidden" name="query_user_id" value="<%= @current_user.id %>">
+
+      </div>
+
+      <button>
+        Create tracking
+      </button>
+    </form>
+  </div>
+</div>
 </div>
 
 <hr>

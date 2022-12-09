@@ -20,6 +20,11 @@
     
   <table style="width: 100%; margin-bottom: 3em;" border="1">
       <tr>
+                <td >
+        <a href="/">
+          Home
+        </a>
+      </td>
         <td >
         <a href="/foods">
           Foods
@@ -28,16 +33,22 @@
       
       
       <% if session.fetch(:user_id) %>
+        
         <td >
           <a href="/users/<%=@current_user.id%>">
-            <%=User.where({:id=>session.fetch(:user_id)}).first.email%>
+            My Profile
           </a>
         </td>
         <td >
         <a href="/competitions">
-          Personal Goals
+          My Goals
         </a>
       </td>
+      <td >
+          <a href="/users">
+            Community (Beta)
+          </a>
+        </td>
         <td >
           <a href="/user_sign_out">
             Sign out
@@ -45,6 +56,11 @@
         </td>
         
       <%else%>
+              <td >
+          <a href="/users">
+            Community (Beta)
+          </a>
+        </td>
         <td >
           <a href="/user_sign_in">
             Sign in

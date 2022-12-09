@@ -1,0 +1,13 @@
+
+<div>
+    <table border="1">
+    <% @list_of_users.each do |person| %>
+      <tr>
+
+        <td>
+          <img src="<%= person.image %>" width=400 height=300>
+        </td>
+        </tr>
+        <%end%>
+        </table>
+        </div>

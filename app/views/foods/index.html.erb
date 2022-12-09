@@ -25,7 +25,6 @@
         </label>
 
         <input type="text" id="name_box" name="query_name">
-        <small id="emailHelp" class="form-text text-muted">We'll never share what you named the food with anyone.</small>
 
       </div>
 
@@ -125,6 +124,8 @@
         <%if session.fetch(:user_id)%>
 
         <th>
+                      <small id="emailHelp" class="form-text text-muted">We'll never share what you logged with anyone.</small>
+
         </th>
         <%end%>
       </tr>
@@ -176,6 +177,7 @@
               <button>
                 Log Food
               </button>
+
             </form>
           
           

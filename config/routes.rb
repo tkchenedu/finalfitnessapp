@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get("/", { :controller => "application", :action => "index" })
   get("users/:id", { :controller => "application", :action => "userpage" })
+  get("users", { :controller => "application", :action => "community" })
+
 
 
 
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
   
   # DELETE
   get("/delete_tracking/:path_id", { :controller => "trackings", :action => "destroy" })
+  get("/delete_trackings", { :controller => "trackings", :action => "destroyall" })
+
 
   #------------------------------
 

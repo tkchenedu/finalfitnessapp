@@ -53,4 +53,14 @@ class TrackingsController < ApplicationController
 
     redirect_to("/trackings", { :notice => "Tracking deleted successfully."} )
   end
+
+  def destroyall
+    Tracking.all.each do |the_tracking|
+      if the_tracking.user_id == session.fetch(:user_id)
+        the_tracking.destroy
+      end
+    end
+
+    redirect_to("/trackings", { :notice => "All trackings deleted."} )
+  end
 end

@@ -4,8 +4,15 @@
   </p>
 
 <% if @the_user.id == session.fetch(:user_id)%>
-<h1>MY PROFILE</h1> 
+<h1>Welcome, <%=@the_user.username%></h1> 
 <img src="<%= @the_user.image %>" width=200 height=150>
+<a href="/trackings">
+            View my Log
+          </a>
+<a href="/delete_trackings">
+            Reset my log
+          </a>
+          
 <%else%>
 <h1>USER PROFILE</h1> 
 <%end%>
@@ -14,6 +21,9 @@
 <% if @the_user.id == @current_user.id%>
       <div>
         <h1>Total Calories: <%=$calories%></h1>
+      </div>
+      <div>
+        <h1>Total Protein: <%=$protein%></h1>
       </div>
 <div>
     <form action="/modify_user" method="post">

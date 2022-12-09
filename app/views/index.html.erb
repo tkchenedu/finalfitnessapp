@@ -2,4 +2,13 @@
   </p>
   <p><%= alert %>
   </p>
-<h1>When you track what you eat everyday, you'll likely see a lot of repetitions. </h1>
+<h1>The Fitness App® </h1>
+<h3>EST 2022</h3>
+
+  <p>
+  </p>
+    <p>
+  </p>
+<%if session.fetch(:user_id)%>
+<div><h1>Quote of the day: <%=@current_user.quote%></h1></div>
+<%end%>

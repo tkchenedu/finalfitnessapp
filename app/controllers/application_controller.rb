@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     logs.each do |log|
       $calories = $calories + log.food.calories
     end
+    $protein = 0.0
+    logs.each do |log|
+      $protein = $protein + log.food.protein
+    end
     render({ :template => "users/show.html.erb" })
   end
   def load_current_user
@@ -27,6 +31,11 @@ class ApplicationController < ActionController::Base
 
   def index
     render({ :template => "index.html.erb" })
+  end
+
+  def community
+    @list_of_users = User.all
+    render({ :template => "users/community.html.erb" })
   end
 
   
